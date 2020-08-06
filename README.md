@@ -1,5 +1,5 @@
 # week6-hw
-
+![Screenshot (119)](https://user-images.githubusercontent.com/65740871/89591288-0d6f7380-d807-11ea-8370-60d50201c9a4.png)
 
 This app is very simple weather dashboard. The Feature the app is given below.
 
@@ -30,4 +30,4 @@ WHEN I open the weather dashboard
 
 THEN I am presented with the last searched city forecast
 ```
-![Screenshot (119)](https://user-images.githubusercontent.com/65740871/89591288-0d6f7380-d807-11ea-8370-60d50201c9a4.png)
+
