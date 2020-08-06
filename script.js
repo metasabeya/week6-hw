@@ -39,7 +39,7 @@ function weatherApp(city) {
 
     var currentImg = $("<img>");
     currentImg.attr(
-      "src",
+     "src",
       "http://openweathermap.org/img/wn/" + response.weather[0].icon + ".png"
     );
 
@@ -69,7 +69,7 @@ function weatherApp(city) {
       cityUvIndex.html("UV Index : " + uvRes.value);
 
       var fiveDayQueryUrl =
-        "https://api.openweathermap.org/data/2.5/forecast?q=" +
+        "http://api.openweathermap.org/data/2.5/forecast?q=" +
         city +
         "&appid=" +
         apiKey;
@@ -88,7 +88,6 @@ function weatherApp(city) {
               (fivedayRes.list[i].main.temp - 273.15) * 1.8 + 32
             );
 
-
             var humidityFive = fivedayRes.list[i].main.humidity;
             var wrapper = $("<div>");
             wrapper.attr("class", "col-md-2");
@@ -102,6 +101,7 @@ function weatherApp(city) {
                 ".png"
             );
 
+            
 
             var fiveTemp = $("<p>");
             fiveTemp.text("Temp: " + tempF);
