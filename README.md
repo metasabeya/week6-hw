@@ -1,5 +1,8 @@
 # week6-hw
 weather dashboard.
+
+
+
 ![Screenshot (119)](https://user-images.githubusercontent.com/65740871/89591288-0d6f7380-d807-11ea-8370-60d50201c9a4.png)
 
 This app is very simple weather dashboard. The Feature the app is given below.
