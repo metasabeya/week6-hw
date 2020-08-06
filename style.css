@@ -1,12 +1,11 @@
+h1 {
+  text-align: center;
+  color: white;
+  }
+
 body{
   background-image:url("sky.jpg"); 
   background-size: 100%;
   color:#000;
 
-}
-.header {
-  background-color: gray;
-  text-align: center;
-  color: white;
-  border: inset black 5px;
 }
