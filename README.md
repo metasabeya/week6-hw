@@ -4,6 +4,7 @@ weather dashboard.
 
 
 
+![Screenshot (120)](https://user-images.githubusercontent.com/65740871/89593339-20d10d80-d80c-11ea-97b5-a0149aded630.png)
 
 
 This app is very simple weather dashboard. The Feature the app is given below.
