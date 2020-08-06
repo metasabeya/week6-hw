@@ -37,8 +37,8 @@ function weatherApp(city) {
 
     var currentImg = $("<img>");
     currentImg.attr(
-      "src",
-      "http://openweathermap.org/img/wn/" + response.weather[0].icon + ".png"
+    
+      "https://openweathermap.org/img/wn/" + response.weather[0].icon + ".png"
     );
 
     var actualTemp = Math.floor((response.main.temp - 273.15) * 1.8 + 32);
@@ -52,7 +52,7 @@ function weatherApp(city) {
     cityLon = response.coord.lon;
 
     var uvQueryUrl =
-      "http://api.openweathermap.org/data/2.5/uvi?appid=" +
+      "https://api.openweathermap.org/data/2.5/uvi?appid=" +
       apiKey +
       "&lat=" +
       cityLat +
