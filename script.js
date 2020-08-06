@@ -22,7 +22,7 @@ $("#find-city").on("click", function (event) {
 });
 
 function weatherApp(city) {
-  var apiKey = "bbe5da90d55bd39816823c09143d06b8";
+  var apiKey = "e686e0dce848c687199057ba5b1706c5";
   var queryurl =
     "https://api.openweathermap.org/data/2.5/weather?q=" +
     city +
@@ -33,11 +33,11 @@ function weatherApp(city) {
     url: queryurl,
     method: "GET",
   }).then(function (response) {
-    console.log(response.weather[0].icon);
+    //console.log(response.weather[0].icon);
 
     var currentImg = $("<img>");
     currentImg.attr(
-    
+      "src",
       "https://openweathermap.org/img/wn/" + response.weather[0].icon + ".png"
     );
 
@@ -51,6 +51,7 @@ function weatherApp(city) {
     cityLat = response.coord.lat;
     cityLon = response.coord.lon;
 
+   
     var uvQueryUrl =
       "https://api.openweathermap.org/data/2.5/uvi?appid=" +
       apiKey +
@@ -67,7 +68,7 @@ function weatherApp(city) {
       cityUvIndex.html("UV Index : " + uvRes.value);
 
       var fiveDayQueryUrl =
-        "https://api.openweathermap.org/data/2.5/forecast?q=" +
+        "http://api.openweathermap.org/data/2.5/forecast?q=" +
         city +
         "&appid=" +
         apiKey;
@@ -84,6 +85,8 @@ function weatherApp(city) {
             var tempF = Math.floor(
               (fivedayRes.list[i].main.temp - 273.15) * 1.8 + 32
             );
+
+
             var humidityFive = fivedayRes.list[i].main.humidity;
             var wrapper = $("<div>");
             wrapper.attr("class", "col-md-2");
@@ -96,6 +99,7 @@ function weatherApp(city) {
                 fivedayRes.list[i].weather[0].icon +
                 ".png"
             );
+
             var fiveTemp = $("<p>");
             fiveTemp.text("Temp: " + tempF);
             var fiveHumidity = $("<p>");
