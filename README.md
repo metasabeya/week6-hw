@@ -1,4 +1,9 @@
 # week6-hw
+weather dashboard.
+
+
+
+
 
 
 This app is very simple weather dashboard. The Feature the app is given below.
@@ -30,3 +35,7 @@ WHEN I open the weather dashboard
 
 THEN I am presented with the last searched city forecast
 ```
+
+
+https://github.com/metasabeya/week6-hw.git
+ https://metasabeya.github.io/week6-hw/
