@@ -10,8 +10,7 @@ weatherApp(cityFromLocalStorage);
 
 $("#find-city").on("click", function (event) {
   event.preventDefault();
-  //console.log("me clicked");
-
+  
   var city = $("#city-input").val();
   var searchedBtn = $("<button>");
   searchedBtn.text(city);
