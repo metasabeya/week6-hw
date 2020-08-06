@@ -68,7 +68,7 @@ function weatherApp(city) {
       cityUvIndex.html("UV Index : " + uvRes.value);
 
       var fiveDayQueryUrl =
-        "http://api.openweathermap.org/data/2.5/forecast?q=" +
+        "https://api.openweathermap.org/data/2.5/forecast?q=" +
         city +
         "&appid=" +
         apiKey;
@@ -77,7 +77,9 @@ function weatherApp(city) {
         method: "GET",
       }).then(function (fivedayRes) {
         $(".fiveDayRow").empty();
+       
         // for the five day forcast
+
         for (var i = 0; i < fivedayRes.list.length; i++) {
           if (fivedayRes.list[i].dt_txt.indexOf("12:00:00") !== -1) {
             var date = fivedayRes.list[i].dt_txt;
@@ -94,7 +96,7 @@ function weatherApp(city) {
             fiveDate.text(date);
             var fiveImage = $("<img>");
             fiveImage.attr(
-              "src",
+         "src",
               "http://openweathermap.org/img/wn/" +
                 fivedayRes.list[i].weather[0].icon +
                 ".png"
