@@ -53,67 +53,66 @@ function weatherApp(city) {
     cityLat = response.coord.lat;
     cityLon = response.coord.lon;
 
-    var uvQueryUrl =
-      "http://api.openweathermap.org/data/2.5/uvi?appid=" +
-      apiKey +
-      "&lat=" +
-      cityLat +
-      "&lon=" +
-      cityLon;
-    $.ajax({
-      url: uvQueryUrl,
-      method: "GET",
-    }).then(function (uvRes) {
+    // var uvQueryUrl =
+    //   "http://api.openweathermap.org/data/2.5/uvi?appid=" +
+    //   apiKey +
+    //   "&lat=" +
+    //   cityLat +
+    //   "&lon=" +
+    //   cityLon;
+    // $.ajax({
+    //   url: uvQueryUrl,
+    //   method: "GET",
+    // }).then(function (uvRes) {
       
+    //   cityUvIndex.html("UV Index : " + uvRes.value);
+     
+    // });
+    var fiveDayQueryUrl =
+    "http://api.openweathermap.org/data/2.5/forecast?q=" +
+    city +
+    "&appid=" +
+    apiKey;
+  $.ajax({
+    url: fiveDayQueryUrl,
+    method: "GET",
+  }).then(function (fivedayRes) {
+    $(".fiveDayRow").empty();
+    //for the five day forecast 
+    
+    for (var i = 0; i < fivedayRes.list.length; i++) {
+      if (fivedayRes.list[i].dt_txt.indexOf("12:00:00") !== -1) {
+        var date = fivedayRes.list[i].dt_txt;
+        date = moment.parseZone(date).format("MMM Do");
+        var tempF = Math.floor(
+          (fivedayRes.list[i].main.temp - 273.15) * 1.8 + 32
+        );
 
-      cityUvIndex.html("UV Index : " + uvRes.value);
+        var humidityFive = fivedayRes.list[i].main.humidity;
+        var wrapper = $("<div>");
+        wrapper.attr("class", "col-md-2");
+        var fiveDate = $("<p>");
+        fiveDate.text(date);
+        var fiveImage = $("<img>");
+        fiveImage.attr(
+          "src",
+          "http://openweathermap.org/img/wn/" +
+            fivedayRes.list[i].weather[0].icon +
+            ".png"
+        );
 
-      var fiveDayQueryUrl =
-        "http://api.openweathermap.org/data/2.5/forecast?q=" +
-        city +
-        "&appid=" +
-        apiKey;
-      $.ajax({
-        url: fiveDayQueryUrl,
-        method: "GET",
-      }).then(function (fivedayRes) {
-        $(".fiveDayRow").empty();
-        //for the five day forecast 
         
-        for (var i = 0; i < fivedayRes.list.length; i++) {
-          if (fivedayRes.list[i].dt_txt.indexOf("12:00:00") !== -1) {
-            var date = fivedayRes.list[i].dt_txt;
-            date = moment.parseZone(date).format("MMM Do");
-            var tempF = Math.floor(
-              (fivedayRes.list[i].main.temp - 273.15) * 1.8 + 32
-            );
 
-            var humidityFive = fivedayRes.list[i].main.humidity;
-            var wrapper = $("<div>");
-            wrapper.attr("class", "col-md-2");
-            var fiveDate = $("<p>");
-            fiveDate.text(date);
-            var fiveImage = $("<img>");
-            fiveImage.attr(
-              "src",
-              "http://openweathermap.org/img/wn/" +
-                fivedayRes.list[i].weather[0].icon +
-                ".png"
-            );
-
-            
-
-            var fiveTemp = $("<p>");
-            fiveTemp.text("Temp: " + tempF);
-            var fiveHumidity = $("<p>");
-            fiveHumidity.text("Humidity: " + humidityFive);
-            wrapper.append(fiveDate, fiveImage, fiveTemp, fiveHumidity);
-            $(".fiveDayRow").append(wrapper);
-          }
-        
-        }
-      });
-    });
+        var fiveTemp = $("<p>");
+        fiveTemp.text("Temp: " + tempF);
+        var fiveHumidity = $("<p>");
+        fiveHumidity.text("Humidity: " + humidityFive);
+        wrapper.append(fiveDate, fiveImage, fiveTemp, fiveHumidity);
+        $(".fiveDayRow").append(wrapper);
+      }
+    
+    }
+  });
   });
 
 }
